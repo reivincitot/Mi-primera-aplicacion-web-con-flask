@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -39,17 +39,27 @@ def saludo(nombre):
 def suma(valor1, valor2):
     return 'La suma es: {0}'.format((valor1+valor2))
 
+
 @app.route('/perfil/<nombre>/<int:edad>')
-def perfil(nombre,edad):
-    return 'Tu nombre es: {0} y tu edad es: {1}'.format(nombre,edad)
+def perfil(nombre, edad):
+    return 'Tu nombre es: {0} y tu edad es: {1}'.format(nombre, edad)
+
 
 @app.route('/lenguajes')
 def lenguajes():
-    data={
-        'hay_lenguajes':True,
-        'lenguajes':['PHP','Python','Kotlin','Java','C#','JavaScript']
+    data = {
+        'hay_lenguajes': True,
+        'lenguajes': ['PHP', 'Python', 'Kotlin', 'Java', 'C#', 'JavaScript']
     }
     return render_template('lenguajes.html', data=data)
+
+@app.route('/datos')
+def datos():
+    #print(request.args)
+    a = request.args.get('valor1')
+    b = request.args.get('valor2')
+    return 'estos son los datos: {0}, {1}'.format(a, b)
+
 
 @app.route('/holamundo')
 def hola_mundo():
