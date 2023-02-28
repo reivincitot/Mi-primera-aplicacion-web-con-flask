@@ -2,16 +2,26 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-# Metodo 1 de creacion de rutas de la aplicacion flask
 
+@app.before_request
+def before_request():
+    print('Antes de la petición...')
+
+
+@app.after_request
+def after_request(response):
+    print('Despues de la petición...')
+    return response
+
+
+# Metodo 1 de creacion de rutas de la aplicacion flask
 """@app.route('/')
 def index():
     return 'Código Facilito'"""
 
 # metodo 2 de creacion de rutasd de la aplicacion flask
-
-
 def index():
+    print('Estamos accediendo a la vista')
     # return render_template('/index.html', titulo='Index')
     data = {
         'titulo': 'Index',
@@ -53,9 +63,10 @@ def lenguajes():
     }
     return render_template('lenguajes.html', data=data)
 
+
 @app.route('/datos')
 def datos():
-    #print(request.args)
+    # print(request.args)
     a = request.args.get('valor1')
     b = request.args.get('valor2')
     return 'estos son los datos: {0}, {1}'.format(a, b)
