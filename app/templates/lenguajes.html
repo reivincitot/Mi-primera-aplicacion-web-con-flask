@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block content %}
+<ul>
+  {% if data.lenguajes|length > 0 %} {% for leng in data.lenguajes %}
+  <li>{{leng}}</li>
+  {% endfor %} {% else %}
+  <h2>No existen lenguajes listado</h2>
+  {% endif %}
+</ul>
+{% endblock %}

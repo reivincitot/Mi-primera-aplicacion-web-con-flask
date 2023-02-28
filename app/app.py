@@ -43,6 +43,13 @@ def suma(valor1, valor2):
 def perfil(nombre,edad):
     return 'Tu nombre es: {0} y tu edad es: {1}'.format(nombre,edad)
 
+@app.route('/lenguajes')
+def lenguajes():
+    data={
+        'hay_lenguajes':True,
+        'lenguajes':['PHP','Python','Kotlin','Java','C#','JavaScript']
+    }
+    return render_template('lenguajes.html', data=data)
 
 @app.route('/holamundo')
 def hola_mundo():
