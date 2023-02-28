@@ -15,8 +15,9 @@ def index():
     #return render_template('/index.html', titulo='Index') 
     data = {
         'titulo' : 'Index',
-        'encabezado':'Bienvenido'
+        'encabezado':'Bienvenido(a)'
     }
+    return render_template('index.html', data=data)
 
 def hola_mundo():
     return 'hola mundo!'
