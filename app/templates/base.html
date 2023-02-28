@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/index.css') }}">
 </head>
 <body>
+    <a href="{{url_for('index')}}">Index</a>
+    <a href="{{url_for('contacto')}}">Contacto</a>
+    <hr>
     <h1>{{data.encabezado}}</h1>
     {% block content %}
-        
     {% endblock  %}
     <script src="{{url_for('static', filename='js/index.js')}}"></script>
 </body>
